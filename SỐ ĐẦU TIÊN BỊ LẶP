@@ -1,0 +1,30 @@
+#include <bits/stdc++.h>
+#define f(i,x,y) for(int i=x; i<=y; ++i)
+#define fn(i,x,y) for(int i=x; i>=y; --i)
+#define ll long long
+
+using namespace std;
+
+int main()
+{
+    ios_base::sync_with_stdio(0),cin.tie(0),cout.tie(0);
+    //freopen("input.txt","r",stdin);
+    //freopen("output.txt","w",stdout);
+    int t;
+    cin >>t;
+    while(t--){
+        int n, k=0;
+        cin >>n;
+        int a[n+5];
+        f(i,1,n) cin >>a[i];
+        f(i,1,n-1){
+            f(j,i+1,n){
+                if(a[i] == a[j]) {cout <<a[i]; k = 1;break;}
+            }
+            if(k==1) break;
+        }
+        if(k==0) cout <<"NO";
+        cout <<'\n';
+    }
+   return 0;
+}
