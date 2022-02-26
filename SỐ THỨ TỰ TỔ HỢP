@@ -1,0 +1,43 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int a[20], b[20], n, k;
+bool check(){
+    for(int i = 1; i <= n; ++i)
+        if(a[i] != b[i])
+            return false;
+    return true;
+}
+
+int main()
+{
+
+    ios_base::sync_with_stdio(0),cin.tie(0),cout.tie(0);
+    //freopen("input.txt","r",stdin);
+    //freopen("output.txt","w",stdout);
+
+    int t;
+    cin >> t;
+    while(t--){
+        int pos = 0;
+        cin >> n >> k;
+        for(int i = 1; i <= k; i++) cin >> a[i] ,b[i] = i;
+        while(++pos){
+            if(check()){
+                cout << pos <<'\n';
+                break;
+            }
+            for(int i = k; i >= 1; i--){
+                if (b[i] != n - k + i){
+                    b[i]++;
+                    for(int j = i + 1; j <= k; j++)
+                        b[j] = b[j - 1] + 1;
+                    break;
+                }
+            }
+        }
+    }
+
+   return 0;
+}
