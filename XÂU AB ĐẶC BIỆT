@@ -1,0 +1,58 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int n, a[1001], kt, cnt, k;
+void Setup(){
+    for(int i = 1; i <= n; ++i) a[i] = 0;
+}
+void Gen(){
+    int i = n;
+    while(i >= 1 && a[i] == 1){
+        a[i] = 0;
+        --i;
+    }
+    if(i == 0) kt = 0;
+    else a[i] = 1;
+
+}
+bool check(){
+    int dem = 0, res = 0;
+    for(int i = 1; i <= n; ++i){
+        if(a[i] == 0) dem++;
+        else dem = 0;
+        if(dem > k) return false;
+        if(dem == k) ++res;
+    }
+    return res == 1;
+}
+int main()
+{
+
+    ios_base::sync_with_stdio(0),cin.tie(0),cout.tie(0);
+    //freopen("input.txt","r",stdin);
+    //freopen("output.txt","w",stdout);
+
+        cin >>n >>k;
+        vector<vector<int>> v;
+        Setup();
+        kt = 1;
+        while(kt){
+            if(check()){
+                vector<int> tmp(a + 1, a + n +1);
+                v.push_back(tmp);
+            }
+            Gen();
+        }
+        cout <<v.size()<<'\n';
+        for(auto i : v){
+            for(int x : i){
+                if(x == 1) cout <<"B";
+                else cout <<"A";
+            }
+            cout <<'\n';
+        }
+
+
+   return 0;
+}
