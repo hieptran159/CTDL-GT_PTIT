@@ -1,0 +1,29 @@
+#include <bits/stdc++.h>
+#define f(i,x,y) for(int i=x; i<=y; ++i)
+#define fn(i,x,y) for(int i=x; i>=y; --i)
+#define ll long long
+
+using namespace std;
+
+int main()
+{
+    ios_base::sync_with_stdio(0),cin.tie(0),cout.tie(0);
+    //freopen("input.txt","r",stdin);
+    //freopen("output.txt","w",stdout);
+    int t;
+    cin >>t;
+    while(t--){
+        int n, k;
+        cin >>n >>k;
+        int a[n+1];
+        ll cnt=0;
+        for(int i=0; i<n; ++i) cin >>a[i];
+        sort(a,a+n);
+        for(int i=0; i<n-1; ++i){
+            int id=upper_bound(a,a+n,a[i]+k-1)-a;
+            cnt += id-i-1;
+        }
+        cout <<cnt <<'\n';
+    }
+   return 0;
+}
