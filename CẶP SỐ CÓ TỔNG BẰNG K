@@ -1,0 +1,41 @@
+#include <bits/stdc++.h>
+#define f(i,x,y) for(int i=x; i<=y; ++i)
+#define fn(i,x,y) for(int i=x; i>=y; --i)
+#define ll long long
+
+using namespace std;
+
+int main()
+{
+    ios_base::sync_with_stdio(0),cin.tie(0),cout.tie(0);
+    //freopen("input.txt","r",stdin);
+    //freopen("output.txt","w",stdout);
+    int t;
+    cin >>t;
+    while(t--){
+        int n, k;
+        cin >> n >> k;
+        unordered_map<int, int> fre;
+        vector<int> arr(n);
+        for (int i = 0; i < n; i++)
+        {
+            cin >> arr[i];
+            fre[arr[i]]++;
+        }
+        ll answer = 0;
+        for (int i = 0; i < n; i++)
+        {
+            if (arr[i] == k - arr[i])
+            {
+                answer += (fre[arr[i]] - 1);
+            }
+            else
+            {
+                answer += (fre[k - arr[i]]);
+            }
+        }
+        answer /= 2;
+        cout <<answer <<'\n';
+    }
+   return 0;
+}
