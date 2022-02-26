@@ -1,0 +1,40 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int n, a[1001], kt, cnt;
+void setup(){
+    for(int i = 1; i <= n; ++i) a[i] = 0;
+}
+void sinh(){
+    int i = n;
+    while(i >= 1 && a[i] == 1){
+        a[i] = 0;
+        --i;
+    }
+    if(i == 0) kt = 0;
+    else a[i] = 1;
+
+}
+int main()
+{
+
+    ios_base::sync_with_stdio(0),cin.tie(0),cout.tie(0);
+    //freopen("input.txt","r",stdin);
+    //freopen("output.txt","w",stdout);
+    int t;
+    cin >>t;
+    while(t--){
+        cin >>n;
+        kt = 1;
+        setup();
+        while(kt){
+            for(int i = 1; i <= n; ++i)
+                printf("%c",a[i]+65);
+            printf(" ");
+            sinh();
+        }
+        printf("\n");
+    }
+   return 0;
+}
