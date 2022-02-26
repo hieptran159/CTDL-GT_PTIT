@@ -1,0 +1,30 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int n, a[11], b[11];
+
+int main()
+{
+
+    ios_base::sync_with_stdio(0),cin.tie(0),cout.tie(0);
+    //freopen("input.txt","r",stdin);
+    //freopen("output.txt","w",stdout);
+    int t; cin >>t;
+    while(t--){
+        cin >>n;
+        int pos = 0;
+        for(int i = 1; i <= n; ++i) cin >>a[i], b[i] = i;
+        do{
+            int ok = 0, x = 0;
+            for(int i = 1; i <= n; ++i){
+                if(a[i] == b[i]) x++;
+                if(x == n) {ok = 1; break;}
+            }
+            pos++;
+            if(ok == 1) break;
+        }while(next_permutation(b + 1, b + n + 1));
+        cout <<pos <<'\n';
+    }
+   return 0;
+}
