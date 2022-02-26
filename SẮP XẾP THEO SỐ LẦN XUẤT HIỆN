@@ -1,0 +1,34 @@
+#include <bits/stdc++.h>
+#define f(i,x,y) for(int i=x; i<=y; ++i)
+#define fn(i,x,y) for(int i=x; i>=y; --i)
+#define ll long long
+
+using namespace std;
+
+int main()
+{
+    ios_base::sync_with_stdio(0),cin.tie(0),cout.tie(0);
+    //freopen("input.txt","r",stdin);
+    //freopen("output.txt","w",stdout);
+    int t;
+    cin >>t;
+    while(t--){
+        int n;
+        cin >>n;
+        vector<int> a(n);
+        int dem[100005]={0}, mx=0;
+        for(int i=0; i < n; ++i) cin >>a[i],dem[a[i]]++;
+        sort(a.begin(),a.end());
+        for(int i=0; i < n; ++i){
+            mx=max(mx,dem[a[i]]);
+        }
+        while(mx!=0){
+            for(int i=0; i < n; ++i){
+                if(dem[a[i]] == mx) cout <<a[i]<<" ";
+            }
+            mx--;
+        }
+        cout <<'\n';
+    }
+   return 0;
+}
