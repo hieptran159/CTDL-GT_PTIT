@@ -1,0 +1,43 @@
+#include <bits/stdc++.h>
+#define f(i,x,y) for(int i=x; i <=y; ++i)
+#define fn(i,x,y) for(int i=x; i >=y; --i)
+#define ll long long
+
+using namespace std;
+bool Check2(int *a, int n, int key){
+    sort(a, a + n);
+    for(int i = 0; i < n; ++i){
+        if(a[i] > key){
+            return false;
+        }
+        int left = i + 1;
+        int right = n - 1;
+        while(left < right){
+            ll sum = a[i] + a[left] + a[right];
+            if(sum > key){
+                right--;
+            }
+            else if(sum < key){
+                left++;
+        }
+            else{
+            //cout << a[i] << " " << a[left] << " " << a[right] << endl;
+            return true;
+            }
+        }
+    }
+    return false;
+}
+int main() {
+    int t;
+    cin >>t;
+    while(t--){
+        int n, k;
+        cin >>n >>k;
+        int a[n+5];
+        f(i,1,n) cin >>a[i];
+        if(Check2(a,n,k)==true) cout <<"YES\n";
+        else cout <<"NO\n";
+    }
+    return 0;
+}
