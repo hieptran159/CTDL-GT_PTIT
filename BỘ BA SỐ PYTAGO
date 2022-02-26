@@ -1,0 +1,47 @@
+#include <bits/stdc++.h>
+#define f(i,x,y) for(int i=x; i<=y; ++i)
+#define fn(i,x,y) for(int i=x; i>=y; --i)
+#define ll long long
+
+using namespace std;
+
+int main()
+{
+    ios_base::sync_with_stdio(0),cin.tie(0),cout.tie(0);
+    //freopen("input.txt","r",stdin);
+    //freopen("output.txt","w",stdout);
+    int t;
+    cin >>t;
+    while(t--){
+        int N;
+          cin>>N;
+          ll arr[N+1];
+          for(int i=0;i<N;i++) cin>>arr[i];
+          ll a,b,c;
+          sort(arr,arr+N);
+          for(int i=0; i < N; i++) arr[i] = (arr[i] * arr[i]);
+          int pos=0;
+          for(int i=0; i<N; i++){
+            ll left = N-2 , right = N-1;
+            a = arr[i];
+            while(left > i){
+              b = arr[left];
+              c = arr[right];
+              ll calculated_side = c - b;
+              if(calculated_side == a){
+                  pos = 1;
+                  left++;
+                  right--;
+                }
+              else if (calculated_side > a)
+                right--;
+              else
+                left--;
+            }
+            if(pos==1) {cout <<"YES\n"; break;}
+          }
+        if(pos==0) cout <<"NO\n";
+    }
+
+   return 0;
+}
