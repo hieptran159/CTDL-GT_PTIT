@@ -41,3 +41,38 @@ int main()
     }
    return 0;
 }
+/* backtrack
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int n, x[105], k;
+void Output(){
+    for(int i = 1; i <= k; ++i)
+        cout <<x[i];
+    cout <<' ';
+}
+void Try(int i){
+    for(int j = x[i - 1] + 1; j <= n - k + i; ++j){
+        x[i] = j;
+        if(i == k) Output();
+        else Try(i + 1);
+    }
+}
+
+int main()
+{
+
+    ios_base::sync_with_stdio(0),cin.tie(0),cout.tie(0);
+    //freopen("input.txt","r",stdin);
+    //freopen("output.txt","w",stdout);
+    int t; cin >>t;
+    while(t--){
+        cin >>n >>k;
+        Try(1);
+        cout <<"\n";
+    }
+   return 0;
+}
+
+*/
