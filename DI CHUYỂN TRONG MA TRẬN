@@ -1,0 +1,39 @@
+#include <bits/stdc++.h>
+#define ms(s,n) memset(s,n,sizeof(s))
+using namespace std;
+
+int a[105][105], n ,ok, m, cnt;
+
+void Input(){
+    cin >>n >>m;
+    for(int i = 1; i <= n; ++i)
+        for(int j = 1; j <= m; ++j)
+            cin >>a[i][j];
+}
+void Try(int i, int j){
+    if(i == n && j == m) ++cnt;
+    if(i + 1 <= n) Try(i + 1, j);
+    if(j + 1 <= m) Try(i, j + 1);
+}
+int dem(int n, int m){
+    if(m == 1 || n == 1) return 1;
+    return dem(n - 1, m) + dem(n, m - 1);
+}
+
+int main()
+{
+
+    ios_base::sync_with_stdio(0),cin.tie(0),cout.tie(0);
+    //freopen("input.txt","r",stdin);
+    //freopen("output.txt","w",stdout);
+
+    int t; cin >>t;
+    while(t--){
+        Input();
+        cnt = 0;
+        Try(1, 1);
+        cout <<cnt <<"\n";
+    }
+
+   return 0;
+}
