@@ -1,0 +1,70 @@
+#include <bits/stdc++.h>
+#define ms(s,n) memset(s,n,sizeof(s))
+using namespace std;
+
+int a[105][105], n ,ok;
+char c[105];
+void Input(){
+    cin >>n;
+    for(int i = 1; i <= n; ++i)
+        for(int j = 1; j <= n; ++j)
+            cin >>a[i][j];
+
+}
+void Try(int i, int j, int k){
+    if(i == n && j == n){
+        for(int l = 1; l < k; ++l)
+            cout <<c[l];
+        cout <<" ";
+        ok = 1;
+        return;
+    }
+    if(i + 1 <= n && a[i + 1][j]){
+        c[k] = 'D';
+        a[i + 1][j] = 0;
+        Try(i + 1, j, k + 1);
+        a[i + 1][j] = 1;
+    }
+    if(j - 1 >= 1 && a[i][j - 1]){
+        c[k] = 'L';
+        a[i][j - 1] = 0;
+        Try(i, j - 1, k + 1);
+        a[i][j - 1] = 1;
+    }
+    if(j + 1 <= n && a[i][j + 1]){
+        c[k] = 'R';
+        a[i][j + 1] = 0;
+        Try(i, j + 1, k + 1);
+        a[i][j + 1] = 1;
+    }
+    if(i - 1 >= 1 && a[i - 1][j]){
+        c[k] = 'U';
+        a[i - 1][j] = 0;
+        Try(i - 1, j, k + 1);
+        a[i - 1][j] = 1;
+    }
+
+}
+
+int main()
+{
+
+    ios_base::sync_with_stdio(0),cin.tie(0),cout.tie(0);
+    //freopen("input.txt","r",stdin);
+    //freopen("output.txt","w",stdout);
+
+    int t; cin >>t;
+    while(t--){
+        Input();
+        ok = 0;
+        if(a[1][1] && a[n][n]){
+            a[1][1] = 0;
+            Try(1, 1, 1);
+        }
+        if(ok) cout <<"\n";
+        else cout <<"-1\n";
+
+    }
+
+   return 0;
+}
