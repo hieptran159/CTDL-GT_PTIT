@@ -1,0 +1,33 @@
+#include <bits/stdc++.h>
+#define ll long long
+using namespace std;
+
+int Five(string s){
+    int num = 0;
+    for(int i = 0; i < s.size(); ++i){
+        if(s[i] == '6') s[i] = '5';
+        num = num * 10 + s[i] - '0';
+    }
+    return num;
+}
+int Six(string s){
+    int num = 0;
+    for(int i = 0; i < s.size(); ++i){
+        if(s[i] == '5') s[i] = '6';
+        num = num * 10 + s[i] - '0';
+    }
+    return num;
+}
+int main()
+{
+
+    ios_base::sync_with_stdio(0),cin.tie(0),cout.tie(0);
+    //freopen("input.txt","r",stdin);
+    //freopen("output.txt","w",stdout);
+
+		string s, s1;
+		cin >>s >>s1;
+		cout <<Five(s) + Five(s1) <<" "<<Six(s) + Six(s1)<<'\n';
+
+   return 0;
+}
