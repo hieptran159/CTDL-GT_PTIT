@@ -1,0 +1,48 @@
+#include <bits/stdc++.h>
+#define present(t, x) (t.find(x) != t.end())
+using namespace std;
+
+int a[100], n, k, ok;
+
+void next(){
+	int i = k;
+	while(i >= 1 && a[i] == n - k + i){
+		--i;
+	}
+	if(i == 0){
+		ok=true;
+		return;
+	}
+	a[i]++;
+	for(int j = i + 1; j <= k + 1; ++j){
+		a[j] = a[i] + j - i;
+	}
+}
+
+int main()
+{
+
+    ios_base::sync_with_stdio(0),cin.tie(0),cout.tie(0);
+    //freopen("input.txt","r",stdin);
+    //freopen("output.txt","w",stdout);
+    int t; cin >>t;
+    while(t--){
+		cin >>n >>k;
+		ok = false;
+		set<int> s;
+		for(int i = 1; i <= k; ++i){
+            cin >>a[i];
+            s.insert(a[i]);
+		}
+		next();
+		if(ok) cout <<k <<'\n';
+		else {
+            int ans = 0;
+            for(int i = 1; i <= k; ++i){
+                if(!present(s,a[i])) ++ans;
+            }
+            cout <<ans <<'\n';
+		  }
+    }
+   return 0;
+}
