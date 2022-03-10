@@ -1,0 +1,26 @@
+#include <bits/stdc++.h>
+#define ll long long
+using namespace std;
+
+int main()
+{
+
+    ios_base::sync_with_stdio(0),cin.tie(0),cout.tie(0);
+    //freopen("input.txt","r",stdin);
+    //freopen("output.txt","w",stdout);
+    int t; cin >>t;
+    while(t--){
+		int n;
+		cin >>n;
+		int a[n + 1];
+		for(int i = 0; i < n; ++i) cin >>a[i];
+		sort(a, a + n);
+		ll evensum = 0, oddsum = 0;
+		for(int i = 0 ; i < n; i += 2)
+            evensum = evensum * 10 + a[i];
+    for(int i = 1 ; i < n; i += 2)
+            oddsum = oddsum * 10 + a[i];
+        cout <<evensum + oddsum <<'\n';
+    }
+   return 0;
+}
