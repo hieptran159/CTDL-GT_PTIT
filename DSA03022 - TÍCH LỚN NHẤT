@@ -1,0 +1,23 @@
+#include <bits/stdc++.h>
+#define ll long long
+using namespace std;
+
+int main()
+{
+
+    ios_base::sync_with_stdio(0),cin.tie(0),cout.tie(0);
+    //freopen("input.txt","r",stdin);
+    //freopen("output.txt","w",stdout);
+
+    int n;
+    cin >>n;
+    int a[n + 1];
+    for(int i = 0; i < n; ++i) cin >>a[i];
+    sort(a, a + n);
+    ll mx1 = max(a[0] * a[1], a[0] * a[n - 1] *a[1]);
+    ll mx2 = max(a[0] * a[1] * a[2], a[n - 1] * a[n - 2] * a[n - 3]);
+    ll mx = max(mx1, mx2);
+    if(mx > 0) cout <<mx ;
+    else cout <<0;
+   return 0;
+}
